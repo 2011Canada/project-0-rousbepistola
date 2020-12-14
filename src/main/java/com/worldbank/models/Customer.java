@@ -2,56 +2,106 @@ package com.worldbank.models;
 
 public class Customer {
 
-	String fname;
-	String lname;
-	int userId;
-	String username;
-	String pass;
-	String userType; //defaults to user
+	private String fname;
+	private String lname;
+	private  String username;
+	private String pass;
+	private int user_id;
+	private String userType;
+	private double balance;
 	
 	
 	
 	//CONSTRUCTORS
 	
-	public Customer(String fname, String lname, int userId, String username, String pass, String userType) {
-		super();
-		this.fname = fname;
-		this.lname = lname;
-		this.userId = userId;
-		this.username = username;
-		this.pass = pass;
-		this.userType = userType;
-	}
-
-	public Customer() {
-		// TODO Auto-generated constructor stub
-	}
-
-
-
-
-
-	@Override
-	public String toString() {
-		return "Customer [fname=" + fname + ", lname=" + lname + ", userId=" + userId + ", username=" + username
-				+ ", pass=" + pass + ", userType=" + userType + "]";
-	}
+	
 
 	
 	
 	//METHODS
 	
-	public void createNewAccount() {
-		
+	public void createNewAccount() {};
+	
+	public Customer(String fname, String lname, String username, String pass, int user_id, String userType,
+			double balance) {
+		super();
+		this.fname = fname;
+		this.lname = lname;
+		this.username = username;
+		this.pass = pass;
+		this.user_id = user_id;
+		this.userType = userType;
+		this.balance = balance;
+	}
+
+	public void withdraw() {};
+	
+	public void deposit() {};
+	
+	public void viewBalance() {};
+	
+	public void transfer() {};
+	
+	public void acceptTransfer() {};
+
+	
+	public String getFname() {
+		return fname;
+	}
+
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+
+	public String getLname() {
+		return lname;
+	}
+
+	public void setLname(String lname) {
+		this.lname = lname;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+
+	public int getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
+	}
+
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
+	public double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
 	};
 	
-	public void withdraw() {
-		
-	};
 	
-	public void deposit() {
-		
-	};
 	
 
 	

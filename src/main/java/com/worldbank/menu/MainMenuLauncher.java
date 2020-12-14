@@ -25,6 +25,20 @@ public class MainMenuLauncher {
 		System.out.println("*****************************************");
 	}
 	
+	public void welcomeToCustomerLogin() {
+		System.out.println("*****************************************");
+		System.out.println("*	       CUSTOMER LOGIN           *");
+		System.out.println("*****************************************");
+	}
+	
+	public void welcomeToCustomerSignup() {
+		System.out.println("*****************************************");
+		System.out.println("*	       CUSTOMER SIGNUP           *");
+		System.out.println("*****************************************");
+	}
+	
+	
+	//loading
 	public void loading(int num) throws InterruptedException {
 		for (int i = 0; i < num; ++i) {
 			Thread.sleep(50);
@@ -34,6 +48,8 @@ public class MainMenuLauncher {
 		
 	}
 	
+	
+	//PSEUDO CLEAR CONSOLE
 	public void clearConsole(int num)
 	{
 		for (int i = 0; i < num; ++i) System.out.println("");

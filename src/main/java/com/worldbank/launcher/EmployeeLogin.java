@@ -23,7 +23,7 @@ public class EmployeeLogin {
 		System.out.println("");
 		System.out.print("USERNAME: ");
 		username = loginScan.nextLine();
-		System.out.print("Password: ");
+		System.out.print("PASSWORD: ");
 		pass = loginScan.nextLine();
 		mainMenu.clearConsole(10);
 
