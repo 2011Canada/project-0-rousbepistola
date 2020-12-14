@@ -128,8 +128,12 @@ public ArrayList<Account> customerWithdrawal(String[] login) {
 		
 		int accountName;
 		
-		System.out.print("withdrawal amount: ");
-		double withdrawalAmount = this.scan.nextDouble();
+		
+//		double withdrawalAmount = this.scan.nextDouble();
+//		while(withdrawalAmount <= 0) {
+//			System.out.print("Please withdraw a valid amount: ");
+//			withdrawalAmount = this.scan.nextDouble();
+//		}
 		
 		try {
 			String sql = "select u.user_id , fname, lname, username, pass, account_id, account_name, balance from \"user\" u \r\n"
@@ -149,6 +153,13 @@ public ArrayList<Account> customerWithdrawal(String[] login) {
 			
 			for(int i = 0; i < accounts.size(); i++) {
 				if (accountName == accounts.get(i).getAccount_id()){
+					System.out.print("withdrawal amount: ");
+					double withdrawalAmount = this.scan.nextDouble();
+					while(withdrawalAmount <= 0 || withdrawalAmount > accounts.get(i).getBalance()) {
+						System.out.print("Please withdraw a valid amount: ");
+						withdrawalAmount = this.scan.nextDouble();
+					}
+					
 					initialBalance = accounts.get(i).getBalance(); 
 					initialBalance = initialBalance - withdrawalAmount;
 					
@@ -188,8 +199,7 @@ public ArrayList<Account> customerDeposit(String[] login) {
 		
 		int accountName;
 		
-		System.out.print("deposit amount: ");
-		double depositAmount = this.scan.nextDouble();
+		
 		
 		try {
 			String sql = "select u.user_id , fname, lname, username, pass, account_id, account_name, balance from \"user\" u \r\n"
@@ -209,6 +219,14 @@ public ArrayList<Account> customerDeposit(String[] login) {
 			
 			for(int i = 0; i < accounts.size(); i++) {
 				if (accountName == accounts.get(i).getAccount_id()){
+					
+					System.out.print("deposit amount: ");
+					double depositAmount = this.scan.nextDouble();
+					while(depositAmount <= 0) {
+						System.out.print("Please deposit a valid amount: ");
+						depositAmount = this.scan.nextDouble();
+					}
+					
 					initialBalance = accounts.get(i).getBalance(); 
 					initialBalance = initialBalance + depositAmount;
 					
@@ -233,6 +251,64 @@ public ArrayList<Account> customerDeposit(String[] login) {
 		
 	}
 
+//-----------------------------------------------------------------------------TRANSFERS-------------------------------------------------------------------------------------------
+
+
+//public ArrayList<Account> customerDeposit(String[] login) {
+//		
+//		Connection conn = this.cf.getConnection();
+//		Account account;
+//		String userid = login[4];
+//		ArrayList<Account> accounts = new ArrayList<Account>();
+//		double initialBalance = 0;
+//		
+//		
+//		int accountName;
+//		
+//		System.out.print("transfer amount: ");
+//		double depositAmount = this.scan.nextDouble();
+//		
+//		try {
+//			String sql = "select u.user_id , fname, lname, username, pass, account_id, account_name, balance from \"user\" u \r\n"
+//					+ "inner join \r\n"
+//					+ "accounts a on u.user_id = a.user_id \r\n"
+//					+ "where u.user_id =" + userid;
+//			
+//			System.out.println("deposit money to which account:");
+//			Statement s = conn.createStatement();
+//			ResultSet res = s.executeQuery(sql);
+//			while(res.next()) {
+//				accounts.add(account = new Account(res.getInt("user_id"), res.getString("account_name"), res.getDouble("balance"), res.getInt("account_id")));
+//				System.out.println("Account ID: " + res.getString("account_id") + " : " + res.getString("account_name") + " : " + res.getDouble("balance"));
+//			} 
+//			
+//			accountName = scan.nextInt();
+//			
+//			for(int i = 0; i < accounts.size(); i++) {
+//				if (accountName == accounts.get(i).getAccount_id()){
+//					initialBalance = accounts.get(i).getBalance(); 
+//					initialBalance = initialBalance + depositAmount;
+//					
+//					
+//				}
+//			}
+//			
+//			sql = "update accounts set balance = "+ initialBalance + "\r\n"
+//					+ "where account_id = " + accountName;
+//			res = s.executeQuery(sql);
+//			
+//			
+//			
+//			
+//			
+//			
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			//do nothing for now
+//		}
+//		return accounts;
+//		
+//	}
 
 	
 

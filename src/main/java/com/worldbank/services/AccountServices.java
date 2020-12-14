@@ -40,7 +40,9 @@ public class AccountServices {
 	
 //	TRANSFERS
 	public void transfer(String[] credentials) {
-		System.out.println("transfer");
+		ArrayList<Account> depositBalance = wbpd.customerDeposit(credentials);
+		System.out.println("TRANSFER SUCCESFUL");
+		System.out.println("\n\n\n");
 	};
 	
 	
