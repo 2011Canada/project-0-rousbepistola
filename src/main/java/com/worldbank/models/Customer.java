@@ -8,7 +8,7 @@ public class Customer {
 	private String pass;
 	private int user_id;
 	private String userType;
-	private double balance;
+	private String account;
 	
 	
 	
@@ -23,7 +23,7 @@ public class Customer {
 	public void createNewAccount() {};
 	
 	public Customer(String fname, String lname, String username, String pass, int user_id, String userType,
-			double balance) {
+			String account) {
 		super();
 		this.fname = fname;
 		this.lname = lname;
@@ -31,7 +31,7 @@ public class Customer {
 		this.pass = pass;
 		this.user_id = user_id;
 		this.userType = userType;
-		this.balance = balance;
+		this.account = account;
 	}
 
 	public void withdraw() {};
@@ -93,13 +93,14 @@ public class Customer {
 		this.userType = userType;
 	}
 
-	public double getBalance() {
-		return balance;
+	public String getAccount() {
+		return account;
 	}
 
-	public void setBalance(double balance) {
-		this.balance = balance;
-	};
+	public void setAccount(String account) {
+		this.account = account;
+	}
+
 	
 	
 	

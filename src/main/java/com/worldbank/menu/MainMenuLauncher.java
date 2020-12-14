@@ -69,6 +69,11 @@ public class MainMenuLauncher {
 		System.out.println("4 : FAQs");
 		System.out.println("");
 		System.out.print("Input option number: ");
+		
+	 while (!loginScan.hasNextInt()) {
+	      System.out.println("Input is not valid. Try Again");
+	      loginScan.nextLine();
+	    }
 		mainOption = loginScan.nextInt();
 		
 		

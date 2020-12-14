@@ -1,47 +1,61 @@
 package com.worldbank.models;
 
-import java.util.ArrayList;
 
 public class Account {
 
-	double balance;
-	ArrayList<String> transactions;
-	int accountNumber;
+	private int user_id;
+	private String account_name;
+	private double balance;
+	private int account_id;
 	
-
+	
+	public int getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
+	}
+	public String getAccount_name() {
+		return account_name;
+	}
+	public void setAccount_name(String account_name) {
+		this.account_name = account_name;
+	}
+	public double getBalance() {
+		return balance;
+	}
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+	public int getAccount_id() {
+		return account_id;
+	}
+	public void setAccount_id(int account_id) {
+		this.account_id = account_id;
+	}
+	
+	
+	public Account(int user_id, String account_name, double balance, int account_id) {
+		super();
+		this.user_id = user_id;
+		this.account_name = account_name;
+		this.balance = balance;
+		this.account_id = account_id;
+	}
+	
+	
 	public Account() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public Account(double balance, ArrayList<String> transactions, int accountNumber) {
-		super();
-		this.balance = balance;
-		this.transactions = transactions;
-		this.accountNumber = accountNumber;
-	}
-
-	//METHODS
-	
-	public void transfer() {
-		
-	};
-	
-	public void acceptTransfer() {
-		
-	};
-	
-	public void viewBalance() {
-		
-	}
-
-	
-	//TO STRING
 	@Override
 	public String toString() {
-		return "Account [balance=" + balance + ", accountNumber=" + accountNumber
-				+ "]";
-	};
+		return "Account [user_id=" + user_id + ", account_name=" + account_name + ", balance=" + balance
+				+ ", account_id=" + account_id + "]";
+	}
+	
+	
+	
 	
 	
 	
