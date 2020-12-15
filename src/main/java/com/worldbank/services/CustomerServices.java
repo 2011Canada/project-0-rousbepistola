@@ -33,7 +33,7 @@ public class CustomerServices {
 		this.userType = "customer";
 //		customer = new Customer(fname, lname, username, pass, user_id, userType, account);
 		
-		System.out.print(credentials[0] + " " + credentials[1]);
+		System.out.print(credentials[0] + " " + credentials[1] + "\nUnique Account Identification: " + credentials[4]);
 		System.out.println("");
 		primary(credentials);
 		
@@ -97,7 +97,7 @@ public class CustomerServices {
 		System.out.println("3 : Deposit");
 		System.out.println("4 : Transfers");
 		System.out.println("5 : Receive Transfers");
-		System.out.println("6 : Create New Account");
+		System.out.println("6 : Create New Banking Account");
 		System.out.println("0 : Logout");
 		
 		System.out.println("");

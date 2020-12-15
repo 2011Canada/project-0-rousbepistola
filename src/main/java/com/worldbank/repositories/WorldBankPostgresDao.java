@@ -47,6 +47,42 @@ public class WorldBankPostgresDao {
 		
 	};
 	
+	//------------------------------------------------------------------------SIGNUP------------------------------------------------------------------------------------------------
+	
+public String[] customerSignup(String[] login) {
+		
+		Connection conn = this.cf.getConnection();
+		String[] customerCred = new String[5];
+		
+		try {
+			String sql = "insert into \"user\" (fname, lname, username, pass) values('"+login[0]+"','"+login[1]+"','"+login[2]+"','"+login[3]+"')";
+			
+			Statement s = conn.createStatement();
+			ResultSet res = s.executeQuery(sql);
+			
+			if(res.next()) {
+				customerCred[0] = res.getString("fname");
+				customerCred[1] = res.getString("lname");
+				customerCred[2] = res.getString("username");
+				customerCred[3] = res.getString("pass");
+				customerCred[4] = res.getString("user_id");
+			} else {
+				customerCred[0] = "false";
+				return customerCred;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("");
+		}
+		return customerCred;
+		
+	};
+	
+	
+	
+	
+	
 //------------------------------------------------------------------------LOGIN------------------------------------------------------------------------------------------------
 	
 public String[] customerLogin(String[] login) {
@@ -286,7 +322,7 @@ public ArrayList<Account> customerTransfer(String[] login) {
 				System.out.println("Account ID: " + res.getString("account_id") + " : " + res.getString("account_name") + " : " + res.getDouble("balance"));
 			} 
 			
-			System.out.println("transfer money from which account:");
+			System.out.println("transfer money from which account ID :");
 			accountName = scan.nextInt();
 			
 			

@@ -66,13 +66,14 @@ public class WorldBankLauncher {
 			mainMenu.clearConsole(50);
 			mainMenu.welcomeToWorldBank();
 			System.out.println("Welcome to your new customer account!");
+			customerServices.CustomerMain(customerSignupCredentials);
 			mainMenu.clearConsole(10);
 		    break;
 		  
 		  case 4: //4 -- FAQs
 			mainMenu.clearConsole(50);
 			mainMenu.welcomeToWorldBank();
-			System.out.println("NO FAQS QUESTION FOR NOW");
+			System.out.println("Am I stillalive? : YES");
 		    break;
 		  default:
 			  mainMenu.welcomeToWorldBank();

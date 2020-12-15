@@ -4,6 +4,7 @@ import java.io.Console;
 import java.util.Scanner;
 
 import com.worldbank.menu.MainMenuLauncher;
+import com.worldbank.repositories.WorldBankPostgresDao;
 
 public class CustomerSignup {
 	
@@ -11,13 +12,14 @@ public class CustomerSignup {
 	String lname;
 	String username;
 	String pass;
-	String email;
 	
 	String[] login = new String[5];
 	
 	Scanner signupScan = new Scanner(System.in);
 	Console console = System.console(); // will be used possibly later once we know how to get password from console.
 	MainMenuLauncher mainMenu = new MainMenuLauncher();
+	
+	WorldBankPostgresDao wbpd = new WorldBankPostgresDao();
 	
 //	methods
 	
@@ -30,8 +32,6 @@ public class CustomerSignup {
 		fname = signupScan.nextLine();
 		System.out.print("LAST NAME: ");
 		lname = signupScan.nextLine();
-		System.out.print("EMAIL: ");
-		email = signupScan.nextLine();
 		System.out.print("USERNAME: ");
 		username = signupScan.nextLine();
 		System.out.print("PASSWORD: "); 
@@ -43,18 +43,24 @@ public class CustomerSignup {
 		login[1] = pass;
 		login[2] = fname;
 		login[3] = lname;
-		login[4] = email;
 		
+		String[] customerCredential = wbpd.customerSignup(login);
+//		System.out.println(customerCredential[0]);
 		
+//		if(customerCredential[0].equals("false")) {
+//			System.out.println("Signup Unsuccesful");
+//			customerSignup();
+//		} else {
+//			customerCredential = wbpd.customerLogin(login);
+//			return customerCredential;
+//		}
+		customerCredential = wbpd.customerLogin(login);
+		return customerCredential;
 		
-		return login;
-		
+	}
+
 	}
 	
 
-}
 
 
-//TODOS
-// ADD LOGIC FOR VERIFICATION OF THE SAME PASSWORD INPUT
-// ADD LOGIC TO SEE IF EMAIL IS EXISTING FOR NEW ACCOUNT CREATION
