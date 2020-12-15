@@ -8,11 +8,17 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.worldbank.models.Account;
 import com.worldbank.models.Transfers;
 import com.worldbank.util.ConnectionFactory;
 
 public class WorldBankPostgresDao {
+	
+	public static Logger transactionLogs = LogManager.getLogger("com.revature.e720");
+	
 	Scanner scan = new Scanner(System.in);
 	
 	
@@ -200,7 +206,7 @@ public ArrayList<Account> customerWithdrawal(String[] login) {
 					initialBalance = accounts.get(i).getBalance(); 
 					initialBalance = initialBalance - withdrawalAmount;
 					
-					
+					transactionLogs.debug("Withdrawal from account id: " + accounts.get(i).getAccount_id() + " with amount of: " + withdrawalAmount);
 				}
 			}
 			
@@ -267,7 +273,7 @@ public ArrayList<Account> customerDeposit(String[] login) {
 					initialBalance = accounts.get(i).getBalance(); 
 					initialBalance = initialBalance + depositAmount;
 					
-					
+					transactionLogs.debug("Deposit to account id: " + accounts.get(i).getAccount_id() + " with amount of: " + depositAmount);
 				}
 			}
 			
@@ -338,6 +344,8 @@ public ArrayList<Account> customerTransfer(String[] login) {
 					transferAmount = transferInput;
 					initialBalance = accounts.get(i).getBalance(); 
 					initialBalance = initialBalance - transferInput;
+					
+					transactionLogs.debug("Transfer using account id: " + accounts.get(i).getAccount_id() + " with amount of: " + transferInput);
 				} 
 			}
 			
@@ -422,7 +430,7 @@ public ArrayList<Transfers> receiveTransfer(String[] login) {
 				if((transferToAccountNumber == transfers.get(i).getAccount_id()) || (transferPassword == transfers.get(i).getPass())) {
 					System.out.println("\n\nAmount deposited to " + transfers.get(i).getAccount_name() + " account. Amount: $" + transfers.get(i).getAmount());
 					newBalance = transfers.get(i).getBalance() + transfers.get(i).getAmount();
-				
+					transactionLogs.debug("Transfer deposit to account id: " + transferToAccountNumber + " with amount of: " + transfers.get(i).getAmount());
 						try {
 							sql =  "update accounts set balance = "+ newBalance + "\r\n"
 									+ "where account_id = " + transferToAccountNumber;
@@ -483,6 +491,7 @@ public int createAccount(String[] login) {
 	balance = scan.nextDouble();
 	
 	try {
+		transactionLogs.debug("User with user_id: " + userid + " Requested approval of new bank account");
 		
 		String sql = "insert into \"accounts\"(account_name, balance, user_id, isactive)\r\n"
 				+ "values ('"+account_name+"', "+balance+", "+userid+", false)";

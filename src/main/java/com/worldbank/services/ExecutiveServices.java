@@ -1,6 +1,10 @@
 package com.worldbank.services;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 import com.worldbank.models.Account;
 import com.worldbank.repositories.EmployeeServicesDao;
@@ -44,7 +48,18 @@ public class ExecutiveServices {
 	
 	
 	public void viewLogs(String[] credentials){
-		System.out.println("Viewed logs\n\n\n");
+		
+		System.out.println("====================TRANSACTION LOGS====================");
+		try (Stream<String> stream = Files.lines(Paths.get("C:\\Users\\rousb\\Desktop\\projectWorkspace\\project-0-rousbepistola\\logs\\trace.log"))) {
+	        stream.forEach(System.out::println);
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+//		e.printStackTrace();
+		System.out.println("failed fetching logs\n\n\n");
+	}
+		System.out.println("====================TRANSACTION ENDS====================\n\n\n\n\n");
+		
+		
 	}
 	
 }

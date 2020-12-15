@@ -1,5 +1,8 @@
 package com.worldbank.launcher;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.worldbank.menu.*;
 import com.worldbank.repositories.WorldBankPostgresDao;
 import com.worldbank.services.CustomerServices;
@@ -7,8 +10,12 @@ import com.worldbank.services.EmployeeServices;
 
 
 public class WorldBankLauncher {
+	public static Logger transactionLogs = LogManager.getLogger("com.revature.e720");
 
 	public static void main(String[] args) throws InterruptedException {
+		
+		transactionLogs.info("\n\n\nBank Server Accessed");
+//		Logger transactionLogs = LogManager.getLogger("com.worldbank.transactions"); 
 		
 		MainMenuLauncher mainMenu = new MainMenuLauncher();
 		EmployeeLogin eLogin = new EmployeeLogin();
@@ -41,6 +48,10 @@ public class WorldBankLauncher {
 			mainMenu.clearConsole(50);
 			mainMenu.welcomeToWorldBank();
 			System.out.println("Welcome to your customer account!");
+			
+			transactionLogs.debug("Customer Logged In: " + customerLoginCredentials[0] +" "+ customerLoginCredentials[1]);
+//			transactionLogs.info("Customer Logged In: ");
+			
 			customerServices.CustomerMain(customerLoginCredentials);
 			mainMenu.clearConsole(10);
 		    break;	
@@ -54,6 +65,7 @@ public class WorldBankLauncher {
 			mainMenu.clearConsole(50);
 			mainMenu.welcomeToWorldBank();
 			System.out.println("Welcome to your employee account!");
+			transactionLogs.debug("Employee Logged In: " + employeeLoginCredentials[0] +" "+ employeeLoginCredentials[1]);
 			employeeServices.CustomerMain(employeeLoginCredentials);
 			mainMenu.clearConsole(10);
 		    break;
@@ -66,6 +78,7 @@ public class WorldBankLauncher {
 			mainMenu.clearConsole(50);
 			mainMenu.welcomeToWorldBank();
 			System.out.println("Welcome to your new customer account!");
+			transactionLogs.debug("Customer Signed Up: " + customerSignupCredentials[0] +" "+ customerSignupCredentials[1]);
 			customerServices.CustomerMain(customerSignupCredentials);
 			mainMenu.clearConsole(10);
 		    break;
@@ -73,7 +86,7 @@ public class WorldBankLauncher {
 		  case 4: //4 -- FAQs
 			mainMenu.clearConsole(50);
 			mainMenu.welcomeToWorldBank();
-			System.out.println("Am I stillalive? : YES");
+			System.out.println("Am I still alive? : YES\n\nThank you");
 		    break;
 		  default:
 			  mainMenu.welcomeToWorldBank();
