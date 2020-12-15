@@ -68,11 +68,16 @@ public class CustomerServices {
 		}
 		
 		if(option == 5) {
+			accountServices.receiveTransfers(credentials);
+			CustomerMain(credentials);
+		}
+		
+		if(option == 5) {
 			accountServices.createNewAccount(credentials);
 			CustomerMain(credentials);
 		}
 		
-		if(option == 6) {
+		if(option == 0) {
 			logout();
 		}
 		
@@ -91,8 +96,9 @@ public class CustomerServices {
 		System.out.println("2 : Withdraw");
 		System.out.println("3 : Deposit");
 		System.out.println("4 : Transfers");
-		System.out.println("5 : Create New Account");
-		System.out.println("6 : Logout");
+		System.out.println("5 : Receive Transfers");
+		System.out.println("6 : Create New Account");
+		System.out.println("0 : Logout");
 		
 		System.out.println("");
 		System.out.print("ENTER SELECTION : ");
@@ -110,7 +116,7 @@ public class CustomerServices {
 		mainMenu.clearConsole(15);
 		
 		
-		if(option <= 0 || option >= 7) {
+		if(option < 0 || option >= 7) {
 			mainMenu.clearConsole(20);
 			System.out.println("Invalid selection, please try again");
 			customerOptions();

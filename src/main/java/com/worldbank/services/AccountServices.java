@@ -3,6 +3,7 @@ package com.worldbank.services;
 import java.util.ArrayList;
 
 import com.worldbank.models.Account;
+import com.worldbank.models.Transfers;
 import com.worldbank.repositories.WorldBankPostgresDao;
 
 public class AccountServices {
@@ -40,16 +41,26 @@ public class AccountServices {
 	
 //	TRANSFERS
 	public void transfer(String[] credentials) {
-		ArrayList<Account> depositBalance = wbpd.customerDeposit(credentials);
-		System.out.println("TRANSFER SUCCESFUL");
+		ArrayList<Account> transfer = wbpd.customerTransfer(credentials);
+		System.out.println("Transfer Initialized. \nShare the transfer Password and account number where you deposited the money \nto the account owner for them to receive the money");
 		System.out.println("\n\n\n");
 	};
 	
+//	RECEIVE TRANSFERS
+	public void receiveTransfers(String[] credentials) {
+		ArrayList<Transfers> receivedTransfer = wbpd.receiveTransfer(credentials);
+		System.out.println("Transactions might have delays. Check again at a later time if expected tansaction is not available");
+		System.out.println("\n\n\n");
+		
+	}
 	
 //	CREATE NEW ACCOUNT
 	public void createNewAccount(String[] credentials) {
 		System.out.println("newaccount");
 	}
+
+
+
 
 	
 

@@ -41,7 +41,7 @@ public class MainMenuLauncher {
 	//loading
 	public void loading(int num) throws InterruptedException {
 		for (int i = 0; i < num; ++i) {
-			Thread.sleep(50);
+			Thread.sleep(10);
 			System.out.print("•");
 		}
 		
