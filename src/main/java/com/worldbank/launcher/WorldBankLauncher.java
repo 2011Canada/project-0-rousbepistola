@@ -3,6 +3,7 @@ package com.worldbank.launcher;
 import com.worldbank.menu.*;
 import com.worldbank.repositories.WorldBankPostgresDao;
 import com.worldbank.services.CustomerServices;
+import com.worldbank.services.EmployeeServices;
 
 
 public class WorldBankLauncher {
@@ -15,6 +16,7 @@ public class WorldBankLauncher {
 		CustomerSignup cSignup = new CustomerSignup();
 		WorldBankPostgresDao wbpd = new WorldBankPostgresDao();
 		CustomerServices customerServices = new CustomerServices();
+		EmployeeServices employeeServices = new EmployeeServices();
 		
 		
 		// CREDENTIALS
@@ -52,6 +54,7 @@ public class WorldBankLauncher {
 			mainMenu.clearConsole(50);
 			mainMenu.welcomeToWorldBank();
 			System.out.println("Welcome to your employee account!");
+			employeeServices.CustomerMain(employeeLoginCredentials);
 			mainMenu.clearConsole(10);
 		    break;
 		  

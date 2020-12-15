@@ -3,6 +3,7 @@ package com.worldbank.launcher;
 import java.util.Scanner;
 
 import com.worldbank.menu.MainMenuLauncher;
+import com.worldbank.repositories.WorldBankPostgresDao;
 
 import java.io.Console;
 
@@ -16,6 +17,8 @@ public class EmployeeLogin {
 	Console console = System.console();
 	MainMenuLauncher mainMenu = new MainMenuLauncher();
 	
+	WorldBankPostgresDao wbpd = new WorldBankPostgresDao();
+	
 	public String[] employeeLogin() {
 		
 		System.out.println("");
@@ -25,29 +28,30 @@ public class EmployeeLogin {
 		username = loginScan.nextLine();
 		System.out.print("PASSWORD: ");
 		pass = loginScan.nextLine();
-		mainMenu.clearConsole(10);
+		mainMenu.clearConsole(20);
 
 		
-//		System.out.println("Your username: " + username + " and password: " + pass);
+
 		login[0] = username;
 		login[1] = pass;
-//		System.out.println(login[0]);
 
-		return login;
 		
+		String[] employeeCredential = wbpd.employeeLogin(login);
+//		System.out.println(customerCredential[0]);
+		
+		if(employeeCredential[0].equals("false")) {
+			System.out.println("Username or Password may be incorrect or does not exist. Please try again");
+			employeeCredential[0] = null;
+			employeeLogin();
+		} else {
+			employeeCredential = wbpd.employeeLogin(login);
+			return employeeCredential;
+		}
+		employeeCredential = wbpd.employeeLogin(login);
+		return employeeCredential; 
 	}
 
 	
 
 }
 
-
-//WORKING ON SOME CODE TO HIDE PASSWORD
-//if(console != null) {
-//pass = console.readLine();
-//} else {
-//System.out.println("Console is not available");
-//}
-//
-//
-//pass = console.readPassword();

@@ -56,12 +56,9 @@ public class AccountServices {
 	
 //	CREATE NEW ACCOUNT
 	public void createNewAccount(String[] credentials) {
-		System.out.println("newaccount");
+		int createAccount = wbpd.createAccount(credentials);
+		System.out.println("Account Creation Request Initiated\n\n\n");
 	}
 
-
-
-
-	
 
 }

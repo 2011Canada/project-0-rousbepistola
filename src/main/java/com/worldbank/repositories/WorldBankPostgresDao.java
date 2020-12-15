@@ -94,7 +94,7 @@ public ArrayList<Account> customerViewBalance(String[] login) {
 			String sql = "select u.user_id , fname, lname, username, pass, account_id, account_name, balance from \"user\" u \r\n"
 					+ "inner join \r\n"
 					+ "accounts a on u.user_id = a.user_id \r\n"
-					+ "where u.user_id =" + userid;
+					+ "where u.user_id =" + userid + " and isactive=true";
 			
 			Statement s = conn.createStatement();
 			ResultSet res = s.executeQuery(sql);
@@ -108,7 +108,7 @@ public ArrayList<Account> customerViewBalance(String[] login) {
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("");
 		}
 		return accounts;
 		
@@ -424,17 +424,84 @@ public ArrayList<Transfers> receiveTransfer(String[] login) {
 		// TODO: handle exception
 	}
 	
-	
-	
-	
-	
 	return transfers;
-	
-	
-	
 	
 }
 
+
+//----------------------------------------------------------------------------- NEW ACCOUNT CREATION-------------------------------------------------------------------------------------------
 	
+
+public int createAccount(String[] login) {
+	
+	String userid = login[4];
+	Connection conn = this.cf.getConnection();
+	String account_name;
+	double balance;
+	
+	System.out.println("CREATE NEW ACCOUNT");
+	System.out.println("Be advised that any account creation is pending for approval by \na designated WorldBank employee and might take \n3-5 business days\n\n");
+	System.out.println("Type Account Name:");
+	account_name = scan.nextLine();
+	System.out.println("Initial Deposit Amount  (to be checked by employee for approval)");
+	balance = scan.nextDouble();
+	
+	try {
+		
+		String sql = "insert into \"accounts\"(account_name, balance, user_id, isactive)\r\n"
+				+ "values ('"+account_name+"', "+balance+", "+userid+", false)";
+		
+
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery(sql);
+		
+		
+	} catch (Exception e) {
+		// TODO: handle exception
+		System.out.println("");
+	}
+	
+	return 0;
+	
+}
+
+
+
+//-------------------------------------EMPLOYEE LOGIN--------------------------------------------
+public String[] employeeLogin(String[] login) {
+	Connection conn = this.cf.getConnection();
+	String[] customerCred = new String[5];
+	
+	try {
+
+		String sql = "select * from \"employee\" where username = '" + login[0] + "' and pass = '" + login[1] + "'";
+		
+		Statement s = conn.createStatement();
+		ResultSet res = s.executeQuery(sql);
+		
+		if(res.next()) {
+			customerCred[0] = res.getString("fname");
+			customerCred[1] = res.getString("lname");
+			customerCred[2] = res.getString("username");
+			customerCred[3] = res.getString("pass");
+			customerCred[4] = res.getString("user_id");
+		} else {
+			customerCred[0] = "false";
+			return customerCred;
+		}
+		
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return customerCred;
+	
+
+}
+
+
+
+
+
 
 }
