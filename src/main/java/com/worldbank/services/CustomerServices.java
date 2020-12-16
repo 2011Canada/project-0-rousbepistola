@@ -16,7 +16,7 @@ public class CustomerServices {
 	String lname;
 	String username;
 	String pass;
-	int user_id;
+	String user_id;
 	String userType;
 	String account;
 	Customer customer;
@@ -29,7 +29,8 @@ public class CustomerServices {
 		this.lname = credentials[1];
 		this.username = credentials[2];
 		this.pass = credentials[3];;
-		this.user_id = Integer.parseInt(credentials[4]);
+//		this.user_id = Integer.parseInt(credentials[4]);
+		this.user_id = credentials[4];
 		this.userType = "customer";
 //		customer = new Customer(fname, lname, username, pass, user_id, userType, account);
 		

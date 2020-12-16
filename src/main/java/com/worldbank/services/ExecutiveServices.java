@@ -49,7 +49,7 @@ public class ExecutiveServices {
 	
 	public void viewLogs(String[] credentials){
 		
-		System.out.println("====================TRANSACTION LOGS====================");
+		System.out.println("\n\n\n\n\n====================TRANSACTION LOGS====================");
 		try (Stream<String> stream = Files.lines(Paths.get("C:\\Users\\rousb\\Desktop\\projectWorkspace\\project-0-rousbepistola\\logs\\trace.log"))) {
 	        stream.forEach(System.out::println);
 	} catch (IOException e) {

@@ -1,0 +1,12 @@
+2020-12-15 19:03:48 e720 [INFO] 
+
+
+Bank Server Accessed
+2020-12-15 19:03:59 e720 [DEBUG] Employee Logged In: ADMIN ADMIN
+2020-12-15 20:06:19 e720 [INFO] 
+
+
+Bank Server Accessed
+2020-12-15 20:06:25 e720 [DEBUG] Customer Logged In: Rous Epistola
+2020-12-15 20:06:48 e720 [DEBUG] Deposit to account id: 1 with amount of: 899.0
+2020-12-15 20:07:03 e720 [DEBUG] Deposit to account id: 1 with amount of: 9000.0

@@ -116,7 +116,8 @@ public String[] customerLogin(String[] login) {
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println("");
 		}
 		return customerCred;
 		
@@ -486,7 +487,7 @@ public int createAccount(String[] login) {
 	System.out.println("CREATE NEW ACCOUNT");
 	System.out.println("Be advised that any account creation is pending for approval by \na designated WorldBank employee and might take \n3-5 business days\n\n");
 	System.out.println("Type Account Name:");
-	account_name = scan.nextLine();
+	account_name = scan.next();
 	System.out.println("Initial Deposit Amount  (to be checked by employee for approval)");
 	balance = scan.nextDouble();
 	

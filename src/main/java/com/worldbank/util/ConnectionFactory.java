@@ -27,6 +27,9 @@ public class ConnectionFactory {
 		String user = System.getenv("DB_USER");
 		String password = System.getenv("DB_PASS");
 		
+
+		
+
 		try {
 			this.conn = new Connection[numberOfConnections];
 			for (int i = 0; i < this.conn.length; i++) {

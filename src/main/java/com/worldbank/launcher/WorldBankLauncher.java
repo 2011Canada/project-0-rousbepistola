@@ -78,7 +78,7 @@ public class WorldBankLauncher {
 			mainMenu.clearConsole(50);
 			mainMenu.welcomeToWorldBank();
 			System.out.println("Welcome to your new customer account!");
-			transactionLogs.debug("Customer Signed Up: " + customerSignupCredentials[0] +" "+ customerSignupCredentials[1]);
+			transactionLogs.debug("New Customer Signed Up");
 			customerServices.CustomerMain(customerSignupCredentials);
 			mainMenu.clearConsole(10);
 		    break;
